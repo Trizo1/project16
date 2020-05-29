@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Иван",
+      "surname": "Иванов",
+      "patronymic": "Иванович",
+      "phone": "89154311145",
+      "email": "ivan-ivanov@mail.ru",
+      "date": "13.08.1986",
+      "section": 0
+    },
+    {
+      "id": 2,
+      "name": "Петр",
+      "surname": "Петров",
+      "patronymic": "Петрович",
+      "phone": "89201235676",
+      "email": "petr-petrov@yandex.ru",
+      "date": "25.01.1980",
+      "section": 1
+    },
+    {
+      "id": 3,
+      "name": "Сидор",
+      "surname": "Сидоров",
+      "patronymic": "Сидорович",
+      "phone": "89258731425",
+      "email": "sidor-sidorov@gmail.com",
+      "date": "01.01.1976",
+      "section": 2
+    },
+    {
+      "id": 4,
+      "name": "Вогодаев",
+      "surname": "Василий",
+      "patronymic": "Васильевич",
+      "phone": "89154311145",
+      "email": "vasiliy-vog@yandex.ru",
+      "date": "19.11.1977",
+      "section": 3
+    }
+  ]
+}
