@@ -1,28 +1,66 @@
-<div class="container-fluid mt-2" *ngIf="users !==[]">
-    <div class="table-users" *ngFor="let index of userSectionCount">
-        <table class=" table table-striped" *ngFor="let user of getByType(index)">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Фамилия</th>
-                    <th scope="col">Отчество</th>
-                    <th scope="col">Телефон</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Возраст</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="container-fluid px-5" *ngIf="users.length>0">
+    <div class="add-new text-right mt-3 d-flex justify-content-between align-items-center">
+        <input type="text" class="form-control mr-5" placeholder="Фильтрация по имени, фамилии и отчеству"
+            [(ngModel)]="searchStr">
+        <button class="btn btn-primary" (click)="onAddProfile()">Добавить
+            пользователя</button>
+    </div>
+    <div class="sortBy d-flex mt-3 col-3 px-0">
+        <select class="custom-select" (change)="sortBy = ($event.target.value)">
+            <option [selected]=true>Сортировка</option>
+            <option value="id" (click)="sortById = 'id'; reversedId=false">По ID (возрастание)</option>
+            <option value="idReversed">По ID (убывание)</option>
+            <option value="age">По возрасту (возрастание)</option>
+            <option value="ageReversed">По возрасту (убывание)</option>
+        </select>
+    </div>
+    <div class="table-users mt-3" *ngFor="let index of userSectionCount">
+        <div class="table-headers" *ngIf="(getByType(index) | searchFilter:searchStr).length > 0">
+            <h5 class="text-uppercase font-weight-bold mb-0">{{userSection[index]}}</h5>
+            <div class="row border-bottom d-flex align-items-center font-weight-bold mx-0 mt-2">
+                <div class="col-1">
+                    ID
+                </div>
+                <div class="col-2">
+                    Имя
+                </div>
+                <div class="col-2">
+                    Фамилия
+                </div>
+                <div class="col-2">
+                    Отчество
+                </div>
+                <div class="col-1">
+                    Телефон
+                </div>
+                <div class="col-2">
+                    Email
+                </div>
+                <div class="col-1">
+                    Возраст
+                </div>
+            </div>
+        </div>
+        <div class="row py-2 border-bottom mx-0"
+            *ngFor="let user of getByType(index) | searchFilter: searchStr | sortBy: sortBy">
+            <div class="col-1 font-weight-bold">{{user.id}}</div>
+            <div class="col-2">{{user.name}}</div>
+            <div class="col-2">{{user.surname}}</div>
+            <div class="col-2">{{user.patronymic}}</div>
+            <div class="col-1">{{user.phone}}</div>
+            <div class="col-2">{{user.email}}</div>
+            <div class="col-1 d-flex flex-column ">
+                <div class="age">
+                    {{getAge(user)}}
+                </div>
+                <div class="date">
+                    ({{user.date}})
+                </div>
+            </div>
+            <div class="col-1 d-flex flex-column justify-content-end">
+                <button class="btn btn-secondary btn-sm" (click)="onEditProfile(user.id)">Редактировать</button>
+                <button class="btn btn-danger mt-2 btn-sm" (click)="onDelete(user.id)">Удалить</button>
+            </div>
+        </div>
     </div>
 </div>

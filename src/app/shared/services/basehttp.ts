@@ -11,19 +11,19 @@ export class BaseHttp {
     }
 
     private get(url: string): Observable<any> {
-        return this.get(this.getUrl(url));
+        return this.http.get(this.getUrl(url));
     }
 
     private post(url: string, data: any): Observable<any> {
-        return this.post(this.getUrl(url), data);
+        return this.http.post(this.getUrl(url), data);
     }
 
     private put(url: string, data: any): Observable<any> {
-        return this.put(this.getUrl(url), data);
+        return this.http.put(this.getUrl(url), data);
     }
 
     private delete(url: string): Observable<any> {
-        return this.delete(this.getUrl(url));
+        return this.http.delete(this.getUrl(url));
     }
 
     public getAll(): Promise<any[]> {

@@ -1,1 +1,50 @@
-<p>user-edit works!</p>
+<div class="container mt-2 col-4 mx-auto">
+    <form [formGroup]="userForm">
+        <div class="form-group">
+            <label for="username">Имя</label>
+            <input type="text" class="form-control" formControlName="name" id="username">
+        </div>
+        <div class="form-group">
+            <label for="usersurname">Фамилия</label>
+            <input type="text" class="form-control" formControlName="surname" id="usersurname">
+        </div>
+        <div class="form-group">
+            <label for="userpatronymic">Отчество</label>
+            <input type="text" class="form-control" formControlName="patronymic" id="userpatronymic">
+        </div>
+        <div class="form-group">
+            <label for="userphone">Телефон</label>
+            <input [textMask]="{mask: phoneMask, showMask: true}" type="text" class="form-control"
+                formControlName="phone" id="userphone">
+        </div>
+        <div class="form-group">
+            <label for="useremail">Email</label>
+            <input type="text" class="form-control" formControlName="email" id="useremail">
+        </div>
+        <div class="form-group">
+            <label for="userdate">Дата рождения</label>
+            <input [textMask]="{mask: dateMask, showMask: true}" type="text" class="form-control" formControlName="date"
+                id="userdate">
+        </div>
+        <!--Но я старался :c
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Дата рождения</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div> -->
+        <div class="form-group">
+            <label for="usersection">Отдел</label>
+            <select class="custom-select" formControlName="type" id="usersection" formControlName="section">
+                <option [ngValue]="userSection.it">IT отдел</option>
+                <option [ngValue]="userSection.sales">Отдел продаж</option>
+                <option [ngValue]="userSection.delivery">Отдел доставки</option>
+                <option [ngValue]="userSection.juridical">Юридический отдел</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" [disabled]="!userForm.valid" (click)="onSave()">Сохранить</button>
+        <button class="btn btn-danger ml-3" *ngIf="id != null" (click)="onDelete()">Удалить</button>
+    </form>
+</div>

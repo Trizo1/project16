@@ -7,11 +7,12 @@ export interface User {
     date: string;
     section: UserSection;
     id?: number;
+    age?: number;
 }
 
 export enum UserSection {
     it,
     sales,
     delivery,
-    legal
+    juridical
 }
