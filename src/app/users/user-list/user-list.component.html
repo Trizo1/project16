@@ -8,7 +8,7 @@
     <div class="sortBy d-flex mt-3 col-3 px-0">
         <select class="custom-select" (change)="sortBy = ($event.target.value)">
             <option [selected]=true>Сортировка</option>
-            <option value="id" (click)="sortById = 'id'; reversedId=false">По ID (возрастание)</option>
+            <option value="id">По ID (возрастание)</option>
             <option value="idReversed">По ID (убывание)</option>
             <option value="age">По возрасту (возрастание)</option>
             <option value="ageReversed">По возрасту (убывание)</option>
